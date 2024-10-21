@@ -30,10 +30,7 @@ private:
 	static constexpr float LIFE_PADDING = 20.0f;
 
 	// === POWERUP BAR ===
-	std::string powerupBarString;
-	sf::Text powerupBarText;
-	float powerupBarWidth;
-	float powerupBarHeight;
+
 	sf::RectangleShape powerupBarBox;
 };
 
