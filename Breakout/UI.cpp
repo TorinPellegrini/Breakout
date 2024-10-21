@@ -22,6 +22,13 @@ UI::UI(sf::RenderWindow* window, int lives, GameManager* gameManager)
 	_powerupText.setFillColor(sf::Color::Cyan);
 	_font.loadFromFile("font/montS.ttf");
 	_powerupText.setFont(_font);
+
+	//Initialize Powerup Bar:
+	powerupBarWidth = 10.f;
+	powerupBarHeight = 3.f;
+	powerupBarBox.setOutlineColor(sf::Color::White);
+	powerupBarBox.setOutlineThickness(1.f);
+	powerupBarBox.setPosition(200, 40);
 }
 
 UI::~UI()
@@ -39,26 +46,40 @@ void UI::updatePowerupText(std::pair<POWERUPS, float> powerup)
 		oss << std::fixed << std::setprecision(2) << powerup.second;
 		_powerupText.setString("big " + oss.str());
 		_powerupText.setFillColor(paddleEffectsColour);
+		powerupBarBox.setFillColor(paddleEffectsColour);
+		powerupBarBox.setSize(sf::Vector2f(powerup.second * 20, 20));
 		break;
 	case smallPaddle:
 		oss << std::fixed << std::setprecision(2) << powerup.second;
 		_powerupText.setString("small " + oss.str());
 		_powerupText.setFillColor(paddleEffectsColour);
+		powerupBarBox.setFillColor(paddleEffectsColour);
+		powerupBarBox.setSize(sf::Vector2f(powerup.second * 20, 20));
+
 		break;
 	case slowBall:
 		oss << std::fixed << std::setprecision(2) << powerup.second;
 		_powerupText.setString("slow " + oss.str());
 		_powerupText.setFillColor(ballEffectsColour);
+		powerupBarBox.setFillColor(ballEffectsColour);
+		powerupBarBox.setSize(sf::Vector2f(powerup.second * 20, 20));
+
 		break;
 	case fastBall:
 		oss << std::fixed << std::setprecision(2) << powerup.second;
 		_powerupText.setString("fast " + oss.str());
 		_powerupText.setFillColor(ballEffectsColour);
+		powerupBarBox.setFillColor(ballEffectsColour);
+		powerupBarBox.setSize(sf::Vector2f(powerup.second * 20, 20));
+
 		break;
 	case fireBall:
 		oss << std::fixed << std::setprecision(2) << powerup.second;
 		_powerupText.setString("fire " + oss.str());
 		_powerupText.setFillColor(extraBallEffectsColour);
+		powerupBarBox.setFillColor(extraBallEffectsColour);
+		powerupBarBox.setSize(sf::Vector2f(powerup.second * 20, 20));
+
 		break;
 	case none:
 		_powerupText.setString("");
@@ -75,6 +96,7 @@ void UI::lifeLost(int lives)
 void UI::render()
 {
 	_window->draw(_powerupText);
+	_window->draw(powerupBarBox);
 	for (sf::CircleShape life : _lives)
 	{
 		_window->draw(life);

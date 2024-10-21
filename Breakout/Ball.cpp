@@ -82,6 +82,8 @@ void Ball::update(float dt)
     // collision with bricks
     int collisionResponse = _gameManager->getBrickManager()->checkCollision(_sprite, _direction);
     if (_isFireBall) return; // no collisisons when in fireBall mode.
+    
+
     if (collisionResponse == 1)
     {
         _direction.x *= -1; // Bounce horizontally
