@@ -14,7 +14,7 @@ GameManager::GameManager(sf::RenderWindow* window)
     _masterText.setCharacterSize(48);
     _masterText.setFillColor(sf::Color::Yellow);
 
-    //Defining the camera and setting the display to view through it
+    //Defining the camera and setting the display to view through it (Size of 1000 x 800, center 500, 400)
     camera = sf::View(sf::Vector2f(500.f, 400.f), sf::Vector2f(1000.f, 800.f));
     _window->setView(camera);
 }
@@ -89,6 +89,19 @@ void GameManager::update(float dt)
     _paddle->update(dt);
     _ball->update(dt);
     _powerupManager->update(dt);
+
+    //Camera Shake
+    if (cameraShake > 0.f) {
+        float xOffset = rand() % 10;
+        float yOffset = rand() % 10;
+        camera.move(xOffset, yOffset);
+        _window->setView(camera);
+        camera.move(-xOffset, -yOffset);
+        cameraShake -= dt;
+    }
+    else {
+        _window->setView(camera);
+    }
 }
 
 void GameManager::loseLife()
@@ -100,8 +113,11 @@ void GameManager::loseLife()
     // 
     // This moves the whole window, not ideal:
      // _window->setPosition(sf::Vector2i(100 + rand() % 25, 100 + rand() % 25));
-    camera.move(100.f, 100.f);
-    camera.move(-100.f, -100.f);
+    
+    //camera.move(-100.f, -100.f);
+
+    //Set camera shake for 0.25 seconds
+    cameraShake = 0.25;
 }
 
 void GameManager::render()
