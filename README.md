@@ -36,5 +36,6 @@ fire ball (green)
 21/10/2024, 14:15 - Started project and fixed circular dependency compile error.
 21/10/2024, 15:50 - Finished implementation of a countdown bar for powerups
 22/10/2024 11:57 - Started implementation of a screenshake
+22/10/2024 14:00 - Created a camera and defined its view
 
 

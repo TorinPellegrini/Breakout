@@ -13,6 +13,10 @@ GameManager::GameManager(sf::RenderWindow* window)
     _masterText.setPosition(50, 400);
     _masterText.setCharacterSize(48);
     _masterText.setFillColor(sf::Color::Yellow);
+
+    //Defining the camera and setting the display to view through it
+    camera = sf::View(sf::Vector2f(500.f, 400.f), sf::Vector2f(1000.f, 800.f));
+    _window->setView(camera);
 }
 
 void GameManager::initialize()
@@ -95,8 +99,9 @@ void GameManager::loseLife()
     // TODO screen shake.
     // 
     // This moves the whole window, not ideal:
-    //  _window->setPosition(sf::Vector2i(100 + rand() % 25, 100 + rand() % 25));
-
+     // _window->setPosition(sf::Vector2i(100 + rand() % 25, 100 + rand() % 25));
+    camera.move(100.f, 100.f);
+    camera.move(-100.f, -100.f);
 }
 
 void GameManager::render()
