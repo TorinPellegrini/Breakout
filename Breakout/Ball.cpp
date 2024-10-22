@@ -92,6 +92,11 @@ void Ball::update(float dt)
     {
         _direction.y *= -1; // Bounce vertically
     }
+
+    if (isBigBall) 
+    {
+        _sprite.setScale(2, 2);
+    }
 }
 
 void Ball::render()
@@ -115,4 +120,16 @@ void Ball::setFireBall(float duration)
     }
     _isFireBall = false;
     _timeWithPowerupEffect = 0.f;    
+}
+
+void Ball::setBigBall(float duration) 
+{
+    if (duration)
+    {
+        isBigBall = true;
+        _timeWithPowerupEffect = duration;
+        return;
+    }
+    isBigBall = false;
+    _timeWithPowerupEffect = 0.f;
 }

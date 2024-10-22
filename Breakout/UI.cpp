@@ -79,6 +79,14 @@ void UI::updatePowerupText(std::pair<POWERUPS, float> powerup)
 		powerupBarBox.setSize(sf::Vector2f(powerup.second * 20, 20));
 
 		break;
+	case bigBall:
+		oss << std::fixed << std::setprecision(2) << powerup.second;
+		_powerupText.setString("bigball " + oss.str());
+		_powerupText.setFillColor(ballEffectsColour);
+		powerupBarBox.setFillColor(ballEffectsColour);
+		powerupBarBox.setSize(sf::Vector2f(powerup.second * 20, 20));
+
+		break;
 	case none:
 		_powerupText.setString("");
 		
