@@ -92,8 +92,11 @@ void GameManager::loseLife()
     _lives--;
     _ui->lifeLost(_lives);
 
-    _window->setPosition(sf::Vector2i(100 + rand() % 25, 100 + rand() % 25));
     // TODO screen shake.
+    // 
+    // This moves the whole window, not ideal:
+    //  _window->setPosition(sf::Vector2i(100 + rand() % 25, 100 + rand() % 25));
+
 }
 
 void GameManager::render()
