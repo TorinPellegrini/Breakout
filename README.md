@@ -39,5 +39,7 @@ fire ball (green)
 22/10/2024 14:00 - Created a camera and defined its view
 22/10/2024 14:25 - Basic Camera shake complete
 22/10/2024 14:30 - Added a small rotation to the camera shake
+22/10/2024 15:10 - Start of BigBall powerup, currently bugged
+22/10/2024 15:30 - BigBall powerup implemented
 
 

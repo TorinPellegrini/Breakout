@@ -29,7 +29,9 @@ void Ball::update(float dt)
         {
             setFireBall(0);    // disable fireball
             _sprite.setFillColor(sf::Color::Cyan);  // back to normal colour.
+
         }        
+        setBigBall(0);
     }
 
     // Fireball effect
@@ -76,7 +78,13 @@ void Ball::update(float dt)
         _direction.x = paddlePositionProportion * 2.0f - 1.0f;
 
         // Adjust position to avoid getting stuck inside the paddle
-        _sprite.setPosition(_sprite.getPosition().x, _gameManager->getPaddle()->getBounds().top - 2 * RADIUS);
+        if (isBigBall) {
+            _sprite.setPosition(_sprite.getPosition().x, _gameManager->getPaddle()->getBounds().top - 4 * RADIUS);
+        }
+        else {
+            _sprite.setPosition(_sprite.getPosition().x, _gameManager->getPaddle()->getBounds().top - 2 * RADIUS);
+        }
+
     }
 
     // collision with bricks
@@ -95,7 +103,11 @@ void Ball::update(float dt)
 
     if (isBigBall) 
     {
-        _sprite.setScale(2, 2);
+        _sprite.setRadius(RADIUS * 2);
+    }
+    if (!isBigBall) 
+    {
+        _sprite.setRadius(RADIUS);
     }
 }
 
