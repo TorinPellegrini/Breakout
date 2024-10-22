@@ -38,5 +38,6 @@ fire ball (green)
 22/10/2024 11:57 - Started implementation of a screenshake
 22/10/2024 14:00 - Created a camera and defined its view
 22/10/2024 14:25 - Basic Camera shake complete
+22/10/2024 14:30 - Added a small rotation to the camera shake
 
 

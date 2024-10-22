@@ -94,9 +94,12 @@ void GameManager::update(float dt)
     if (cameraShake > 0.f) {
         float xOffset = rand() % 10;
         float yOffset = rand() % 10;
+        float angleOffset = rand() % 5;
         camera.move(xOffset, yOffset);
+        camera.rotate(angleOffset);
         _window->setView(camera);
         camera.move(-xOffset, -yOffset);
+        camera.rotate(-angleOffset);
         cameraShake -= dt;
     }
     else {
